@@ -1,0 +1,7 @@
+Obsidian	md.obsidian.Obsidian	1.8.10	stable	system
+Freedesktop Platform	org.freedesktop.Platform	freedesktop-sdk-24.08.19	24.08	system
+Mesa	org.freedesktop.Platform.GL.default	25.0.5	24.08	system
+Mesa (Extra)	org.freedesktop.Platform.GL.default	25.0.5	24.08extra	system
+Intel VAAPI driver	org.freedesktop.Platform.VAAPI.Intel		24.08	system
+openh264	org.freedesktop.Platform.openh264	2.5.1	2.5.1	system
+Yaru Gtk Theme	org.gtk.Gtk3theme.Yaru		3.22	system

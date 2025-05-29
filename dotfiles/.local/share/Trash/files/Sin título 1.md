@@ -1,0 +1,10 @@
+- [x] alberto
+- [x] manu
+- [x] alejandro silvan
+- [ ] david
+- [ ] jesus
+- [x] juan cruz
+- [ ] julian
+- [x] miguel
+- [x] ramon
+- [x] ylieess

@@ -22,5 +22,9 @@ proceso:
 - [x] instalar themes de rofi
 - [x] configurar el i3lock-color
 - [] configurar el lightdm-web...
+- [] spotify get
+- [] ips y vpn
+- [] monitores
+- [] discos usb y externos
 
 - [x] (wifi, audio, blueman...)

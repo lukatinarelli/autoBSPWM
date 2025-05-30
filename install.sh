@@ -32,9 +32,15 @@ libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev \
 libpcre2-dev libevdev-dev uthash-dev
 
 # ────────────────────────────────────────────────
+# 🔒 Dependencias de i3lock-color (bloqueador de pantalla personalizado)
+# ────────────────────────────────────────────────
+sudo apt install -y autoconf automake libpam0g-dev libcairo2-dev libxcb-xinerama0-dev libx11-xcb-dev libev-dev libxcb-dpms0-dev libx11-dev libxcb-util0-dev
+
+# ────────────────────────────────────────────────
 # 🎯 Paquetes adicionales útiles para el entorno
 # ────────────────────────────────────────────────
-sudo apt install -y kitty feh scrot scrub rofi xclip bat locate ranger wmname
+sudo apt install -y kitty feh scrot scrub rofi xclip bat locate ranger wmname \
+i3lock pavucontrol blueman
 
 # ────────────────────────────────────────────────
 # 📥 Clonamos Polybar y Picom
@@ -43,6 +49,8 @@ mkdir -p ~/github
 cd ~/github
 git clone --recursive https://github.com/polybar/polybar
 git clone https://github.com/ibhagwan/picom.git
+git clone https://github.com/Raymo111/i3lock-color.git
+git clone https://github.com/newmanls/rofi-themes-collection.git
 
 # ────────────────────────────────────────────────
 # ⚙️ Compilamos Polybar
@@ -63,6 +71,12 @@ ninja -C build
 sudo ninja -C build install
 
 # ────────────────────────────────────────────────
+# ⚙️ Compilamos i3lock-color
+# ────────────────────────────────────────────────
+cd ~/github/ii3lock-color
+./install-i3lock-color.sh
+
+# ────────────────────────────────────────────────
 # 🌟 Instalación Powerlevel10k
 # ────────────────────────────────────────────────
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
@@ -76,6 +90,11 @@ echo 'source /root/.powerlevel10k/powerlevel10k.zsh-theme' | sudo tee -a /root/.
 # ────────────────────────────────────────────────
 mkdir -p ~/.config/rofi/themes
 cp "$ruta/rofi/nord.rasi" ~/.config/rofi/themes/
+cp -v "~/github/rofi-themes-collection/themes/"* ~/.config/rofi/themes/
+
+mkdir -p ~/.config/i3
+cp ~/github/i3lock-color/examples/lock.sh ~/.config/i3
+chmod +x ~/.config/i3/lock.sh
 
 sudo dpkg -i "$ruta/lsd.deb"
 

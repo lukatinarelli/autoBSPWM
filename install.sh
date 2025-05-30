@@ -51,6 +51,7 @@ git clone --recursive https://github.com/polybar/polybar
 git clone https://github.com/ibhagwan/picom.git
 git clone https://github.com/Raymo111/i3lock-color.git
 git clone https://github.com/newmanls/rofi-themes-collection.git
+git clone https://github.com/PrayagS/polybar-spotify.git ~/.config/bin/spotify_status
 
 # ────────────────────────────────────────────────
 # ⚙️ Compilamos Polybar
@@ -75,6 +76,13 @@ sudo ninja -C build install
 # ────────────────────────────────────────────────
 cd ~/github/ii3lock-color
 ./install-i3lock-color.sh
+
+# ────────────────────────────────────────────────
+# ⚙️ Compilamos ipolybar_spotify
+# ────────────────────────────────────────────────
+cd ~/.config/bin/spotify_status
+./get_spotify_status.sh
+
 
 # ────────────────────────────────────────────────
 # 🌟 Instalación Powerlevel10k
@@ -137,6 +145,7 @@ chmod +x ~/.config/bin/ethernet_status.sh
 chmod +x ~/.config/bin/htb_status.sh
 chmod +x ~/.config/bin/htb_target.sh
 chmod +x ~/.config/polybar/launch.sh
+chmod +x ~/.config/bin/spotify_status/get_spotify_status.sh
 sudo chmod +x /usr/local/bin/whichSystem.py
 sudo chmod +x /usr/local/bin/screenshot
 

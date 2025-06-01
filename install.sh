@@ -74,7 +74,7 @@ sudo ninja -C build install
 # ────────────────────────────────────────────────
 # ⚙️ Compilamos i3lock-color
 # ────────────────────────────────────────────────
-cd ~/github/ii3lock-color
+cd ~/github/i3lock-color
 ./install-i3lock-color.sh
 
 # ────────────────────────────────────────────────
@@ -98,7 +98,7 @@ echo 'source /root/.powerlevel10k/powerlevel10k.zsh-theme' | sudo tee -a /root/.
 # ────────────────────────────────────────────────
 mkdir -p ~/.config/rofi/themes
 cp "$ruta/rofi/nord.rasi" ~/.config/rofi/themes/
-cp -v "~/github/rofi-themes-collection/themes/"* ~/.config/rofi/themes/
+cp -v ~/github/rofi-themes-collection/themes/* ~/.config/rofi/themes/
 
 mkdir -p ~/.config/i3
 cp ~/github/i3lock-color/examples/lock.sh ~/.config/i3

@@ -154,6 +154,33 @@ if [ -f "$polybar_config" ]; then
     sed -i 's|^font-1 =.*|font-1 = "Iosevka Nerd Font Complete:size=10;1"|' "$polybar_config"
 fi
 
+# ────────────────────────────────────────────────
+# 📦 Instalar paquetes adicionales del repo (apt, flatpak, snap)
+# ────────────────────────────────────────────────
+
+# 1️⃣ Apt
+if [ -f "$ruta/paquetes/paquetes.txt" ]; then
+    while read -r paquete; do
+        sudo apt install -y "$paquete"
+    done < "$ruta/paquetes/paquetes.txt"
+fi
+
+# 2️⃣ Flatpak
+sudo apt install -y flatpak
+if [ -f "$ruta/paquetes/flatpak.txt" ]; then
+    while read -r paquete; do
+        flatpak install -y "$paquete"
+    done < "$ruta/paquetes/flatpak.txt"
+fi
+
+# 3️⃣ Snap
+sudo apt install -y snapd
+if [ -f "$ruta/paquetes/snap.txt" ]; then
+    while read -r paquete; do
+        sudo snap install "$paquete"
+    done < "$ruta/paquetes/snap.txt"
+fi
+
 mkdir -p ~/Wallpaper ~/ScreenShots
 cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 

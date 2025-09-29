@@ -137,6 +137,23 @@ sudo cp -v "$ruta/fonts/HNF/"* /usr/local/share/fonts/
 sudo cp -v "$ruta/Config/polybar/fonts/"* /usr/share/fonts/truetype/
 sudo fc-cache -fv
 
+# ────────────────────────────────────────────────
+# 🔤 Instalar y configurar nerd fonts
+# ────────────────────────────────────────────────
+
+# Copiar todas las fuentes del repo al sistema
+sudo cp -v "$ruta/Fonts2/fonts/"* /usr/local/share/fonts/
+
+# Recargar caché de fuentes
+sudo fc-cache -fv
+
+# Configurar Polybar para usar nerd fonts
+polybar_config="$HOME/.config/polybar/config"
+if [ -f "$polybar_config" ]; then
+    sed -i 's|^font-0 =.*|font-0 = "Hurmit Nerd Font Mono:size=10;1"|' "$polybar_config"
+    sed -i 's|^font-1 =.*|font-1 = "Iosevka Nerd Font Complete:size=10;1"|' "$polybar_config"
+fi
+
 mkdir -p ~/Wallpaper ~/ScreenShots
 cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 

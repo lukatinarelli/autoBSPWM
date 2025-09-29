@@ -78,6 +78,33 @@ cd ~/github/i3lock-color
 ./install-i3lock-color.sh
 
 # ────────────────────────────────────────────────
+# 🪟 Instalar BSPWM y SXHKD
+# ────────────────────────────────────────────────
+cd ~/github
+git clone https://github.com/baskerville/bspwm.git
+git clone https://github.com/baskerville/sxhkd.git
+
+# Compilar e instalar BSPWM
+cd bspwm
+make
+sudo make install
+
+# Compilar e instalar SXHKD
+cd ../sxhkd
+make
+sudo make install
+
+# Crear entrada de sesión para el gestor de display
+sudo tee /usr/share/xsessions/bspwm.desktop > /dev/null <<EOF
+[Desktop Entry]
+Name=BSPWM
+Comment=Binary Space Partitioning Window Manager
+Exec=bspwm
+TryExec=bspwm
+Type=Application
+EOF
+
+# ────────────────────────────────────────────────
 # ⚙️ Compilamos ipolybar_spotify
 # ────────────────────────────────────────────────
 cd ~/.config/bin/spotify_status

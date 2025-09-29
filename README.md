@@ -28,3 +28,6 @@ proceso:
 - [] discos usb y externos
 
 - [x] (wifi, audio, blueman...)
+
+importante: 
+- terminar de instalar todos los paquetes extra (corregir)

@@ -166,13 +166,21 @@ if [ -f "$ruta/paquetes/paquetes.txt" ]; then
 fi
 
 # 2️⃣ Flatpak
+# Asegurarse de que Flatpak esté instalado
 sudo apt install -y flatpak
-if [ -f "$ruta/paquetes/flatpak.txt" ]; then
-    while read -r nombre id version branch scope; do
+
+# Añadir Flathub como remoto para el usuario
+flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Leer flatpak.txt y ejecutar instalación
+flatpak_txt="$ruta/paquetes/flatpak.txt"
+if [ -f "$flatpak_txt" ]; then
+    while read -r nombre id rest; do
         # Ignorar líneas vacías o comentarios
         [[ -z "$id" ]] && continue
-        flatpak install -y "$id" "$branch" --$scope || echo "Ya instalado o fallo: $id"
-    done < "$ruta/paquetes/flatpak.txt"
+        echo "🔄 Instalando Flatpak: $nombre ($id)"
+        flatpak install -y --user flathub "$id" || echo "⚠️ Ya instalado o fallo: $id"
+    done < "$flatpak_txt"
 fi
 
 # 3️⃣ Snap (CORREGIR)

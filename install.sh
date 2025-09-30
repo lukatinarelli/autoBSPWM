@@ -158,12 +158,7 @@ fi
 # 📦 Instalar paquetes adicionales del repo (apt, flatpak, snap)
 # ────────────────────────────────────────────────
 
-# 1️⃣ Apt (CORREGIR)
-if [ -f "$ruta/paquetes/paquetes.txt" ]; then
-    while read -r paquete; do
-        sudo apt install -y "$paquete"
-    done < "$ruta/paquetes/paquetes.txt"
-fi
+
 
 # 2️⃣ Flatpak
 # Asegurarse de que Flatpak esté instalado
@@ -183,12 +178,18 @@ if [ -f "$flatpak_txt" ]; then
     done < "$flatpak_txt"
 fi
 
-# 3️⃣ Snap (CORREGIR)
+# 3️⃣ Snap
 sudo apt install -y snapd
-if [ -f "$ruta/paquetes/snap.txt" ]; then
-    while read -r paquete; do
-        sudo snap install "$paquete"
-    done < "$ruta/paquetes/snap.txt"
+
+snap_txt="$ruta/paquetes/snaps.txt"
+if [ -f "$snap_txt" ]; then
+    while read -r nombre _; do
+        [[ -z "$nombre" ]] && continue
+        if [[ "$nombre" == "firefox" || "$nombre" == "snap-store" || "$nombre" == "spotify" ]]; then
+            echo "🔄 Instalando Snap: $nombre"
+            sudo snap install "$nombre"
+        fi
+    done < "$snap_txt"
 fi
 
 mkdir -p ~/Wallpaper ~/ScreenShots

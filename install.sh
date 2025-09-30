@@ -158,7 +158,8 @@ fi
 # 📦 Instalar paquetes adicionales del repo (apt, flatpak, snap)
 # ────────────────────────────────────────────────
 
-
+# 1️⃣ Paquetes
+xargs -a $ruta/paquetes/paquetes.txt sudo apt install -y
 
 # 2️⃣ Flatpak
 # Asegurarse de que Flatpak esté instalado
@@ -216,6 +217,8 @@ cd /usr/share/zsh-sudo
 sudo wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
 
 sudo ln -sfv ~/.zshrc /root/.zshrc
+
+chsh -s $(which zsh) $USER
 
 # ────────────────────────────────────────────────
 # 🛠️ Permisos de ejecución

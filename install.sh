@@ -158,7 +158,7 @@ fi
 # 📦 Instalar paquetes adicionales del repo (apt, flatpak, snap)
 # ────────────────────────────────────────────────
 
-# 1️⃣ Apt
+# 1️⃣ Apt (CORREGIR)
 if [ -f "$ruta/paquetes/paquetes.txt" ]; then
     while read -r paquete; do
         sudo apt install -y "$paquete"
@@ -168,12 +168,14 @@ fi
 # 2️⃣ Flatpak
 sudo apt install -y flatpak
 if [ -f "$ruta/paquetes/flatpak.txt" ]; then
-    while read -r paquete; do
-        flatpak install -y "$paquete"
+    while read -r nombre id version branch scope; do
+        # Ignorar líneas vacías o comentarios
+        [[ -z "$id" ]] && continue
+        flatpak install -y "$id" "$branch" --$scope || echo "Ya instalado o fallo: $id"
     done < "$ruta/paquetes/flatpak.txt"
 fi
 
-# 3️⃣ Snap
+# 3️⃣ Snap (CORREGIR)
 sudo apt install -y snapd
 if [ -f "$ruta/paquetes/snap.txt" ]; then
     while read -r paquete; do

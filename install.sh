@@ -198,7 +198,13 @@ cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 
 rm -rf ~/.config/polybar
 cp -rv "$ruta/Config/"* ~/.config/
-sudo cp -rv "$ruta/kitty" /opt/
+mkdir -p ~/.config/kitty
+CONFIGURACIÓN KITTY.CONF
+
+
+
+
+
 
 rm -f ~/.zshrc
 cp -v "$ruta/.zshrc" ~/.zshrc

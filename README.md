@@ -30,4 +30,7 @@ proceso:
 - [x] (wifi, audio, blueman...)
 
 importante: 
-- terminar de instalar todos los paquetes extra (corregir)
+- terminar de instalar todos los paquetes extra (corregir) [corregido]
+- i3lock-color
+- notificaciones
+

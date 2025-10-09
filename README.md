@@ -34,3 +34,10 @@ importante:
 - i3lock-color
 - notificaciones
 
+
+
+
+
+
+capturas... caputars themes.sh...
+pensado para ubuntu

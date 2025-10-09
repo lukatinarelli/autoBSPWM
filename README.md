@@ -1,3 +1,18 @@
+# AutoBSPWM
+
+
+## Comenzando
+
+
+
+
+
+
+
+
+
+
+
 programas:
 - bspwm
 - zsh
@@ -41,3 +56,4 @@ importante:
 
 capturas... caputars themes.sh...
 pensado para ubuntu
+

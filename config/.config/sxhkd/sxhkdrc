@@ -138,6 +138,10 @@ super + alt + {Left,Down,Up,Right}
 super + shift + f
 	firefox
 
+# Chrome
+super + shift + c
+	google-chrome
+
 # BurpSuite
 super + shift + b
 	burpsuite

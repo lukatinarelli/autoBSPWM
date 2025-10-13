@@ -64,11 +64,17 @@ importante:
 
 
 
+syncthing
+keepassxc
+obsidian
+vscode
+
 
 
 
 capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
+
 
 

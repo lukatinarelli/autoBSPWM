@@ -68,6 +68,7 @@ syncthing
 keepassxc
 obsidian
 vscode
+ssh config
 
 
 
@@ -75,6 +76,7 @@ vscode
 capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
+
 
 
 

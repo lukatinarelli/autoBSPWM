@@ -198,6 +198,19 @@ if [ -f "$snap_txt" ]; then
     done < "$snap_txt"
 fi
 
+# ────────────────────────────────────────────────
+# 🖥️ Instalación y configuración segura de LightDM
+# ────────────────────────────────────────────────
+sudo apt install -y lightdm lightdm-gtk-greeter
+
+sudo cp -n /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak 2>/dev/null
+
+sudo cp "$ruta/lightdm.conf" /etc/lightdm/lightdm.conf
+
+echo "lightdm" | sudo tee /etc/X11/default-display-manager
+
+
+
 mkdir -p ~/Wallpaper ~/ScreenShots
 cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 

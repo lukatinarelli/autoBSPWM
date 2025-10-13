@@ -75,7 +75,7 @@ sudo ninja -C build install
 # ⚙️ Compilamos i3lock-color
 # ────────────────────────────────────────────────
 cd ~/github/i3lock-color
-./install-i3lock-color.sh
+sudo ./install-i3lock-color.sh
 
 # ────────────────────────────────────────────────
 # 🪟 Instalar BSPWM y SXHKD
@@ -128,7 +128,7 @@ cp "$ruta/rofi/nord.rasi" ~/.config/rofi/themes/
 cp -v ~/github/rofi-themes-collection/themes/* ~/.config/rofi/themes/
 
 mkdir -p ~/.config/i3
-cp ~/github/i3lock-color/examples/lock.sh ~/.config/i3
+cp -v "$ruta/config/i3/lock.sh" ~/.config/i3/lock.sh
 chmod +x ~/.config/i3/lock.sh
 
 sudo dpkg -i "$ruta/lsd.deb"

@@ -34,7 +34,12 @@ libpcre2-dev libevdev-dev uthash-dev
 # ────────────────────────────────────────────────
 # 🔒 Dependencias de i3lock-color (bloqueador de pantalla personalizado)
 # ────────────────────────────────────────────────
-sudo apt install -y autoconf automake libpam0g-dev libcairo2-dev libxcb-xinerama0-dev libx11-xcb-dev libev-dev libxcb-dpms0-dev libx11-dev libxcb-util0-dev
+sudo apt update
+sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev \
+libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev \
+libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev \
+libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
+libjpeg-dev libgif-dev
 
 # ────────────────────────────────────────────────
 # 🎯 Paquetes adicionales útiles para el entorno
@@ -128,7 +133,7 @@ cp "$ruta/rofi/nord.rasi" ~/.config/rofi/themes/
 cp -v ~/github/rofi-themes-collection/themes/* ~/.config/rofi/themes/
 
 mkdir -p ~/.config/i3
-cp ~/github/i3lock-color/examples/lock.sh ~/.config/i3
+cp -v "$ruta/config/i3/lock.sh" ~/.config/i3/lock.sh
 chmod +x ~/.config/i3/lock.sh
 
 sudo dpkg -i "$ruta/lsd.deb"

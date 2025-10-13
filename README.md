@@ -59,8 +59,9 @@ proceso:
 
 importante: 
 - terminar de instalar todos los paquetes extra (corregir) [corregido]
-- i3lock-color
+- i3lock-color [finalizado]
 - notificaciones
+- SDDM o lightDM
 
 
 
@@ -76,6 +77,7 @@ ssh config
 capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
+
 
 
 

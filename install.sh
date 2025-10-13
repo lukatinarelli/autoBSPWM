@@ -198,6 +198,9 @@ if [ -f "$snap_txt" ]; then
     done < "$snap_txt"
 fi
 
+# 🔗 Hacer visible Spotify en Rofi
+sudo ln -sf /var/lib/snapd/desktop/applications/spotify_spotify.desktop /usr/share/applications/
+
 mkdir -p ~/Wallpaper ~/ScreenShots
 cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 

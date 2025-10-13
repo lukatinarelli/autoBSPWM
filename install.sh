@@ -34,7 +34,12 @@ libpcre2-dev libevdev-dev uthash-dev
 # ────────────────────────────────────────────────
 # 🔒 Dependencias de i3lock-color (bloqueador de pantalla personalizado)
 # ────────────────────────────────────────────────
-sudo apt install -y autoconf automake libpam0g-dev libcairo2-dev libxcb-xinerama0-dev libx11-xcb-dev libev-dev libxcb-dpms0-dev libx11-dev libxcb-util0-dev
+sudo apt update
+sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev \
+libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev \
+libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev \
+libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
+libjpeg-dev libgif-dev
 
 # ────────────────────────────────────────────────
 # 🎯 Paquetes adicionales útiles para el entorno
@@ -75,7 +80,7 @@ sudo ninja -C build install
 # ⚙️ Compilamos i3lock-color
 # ────────────────────────────────────────────────
 cd ~/github/i3lock-color
-sudo ./install-i3lock-color.sh
+./install-i3lock-color.sh
 
 # ────────────────────────────────────────────────
 # 🪟 Instalar BSPWM y SXHKD

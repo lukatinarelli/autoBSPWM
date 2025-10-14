@@ -1,4 +1,4 @@
-# autoBSPWM
+# autoBSPWM [En Proceso]
 
 ¡Bienvenido a **autoBSPWM**!  
 Script para instalar y configurar automáticamente un entorno de trabajo completo y moderno en **Ubuntu** (y derivados), basado en [BSPWM](https://github.com/baskerville/bspwm), [Polybar](https://github.com/polybar/polybar), [sxhkd](https://github.com/baskerville/sxhkd) y más herramientas útiles para tu día a día.
@@ -159,6 +159,7 @@ ssh config
 capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
+
 
 
 

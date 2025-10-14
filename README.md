@@ -124,34 +124,6 @@ AutoBspwm:
 - rofi-themes-collection
 - lightdm-webkit2-greeter
 
-proceso: 
-- sudo apt update sudo apt upgrade
-- ./install.sh
-
-- [x] instalar i3
-- [x] instalar themes de rofi
-- [x] configurar el i3lock-color
-- [] configurar el lightdm-web...
-- [] spotify get
-- [] ips y vpn
-- [] monitores
-- [] discos usb y externos
-
-- [x] (wifi, audio, blueman...)
-
-importante: 
-- terminar de instalar todos los paquetes extra (corregir) [corregido]
-- i3lock-color [finalizado]
-- notificaciones
-- SDDM o lightDM
-
-
-
-syncthing
-keepassxc
-obsidian
-vscode
-ssh config
 
 
 
@@ -160,9 +132,19 @@ capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
 
-
-
-
-
-
-
+- [x] instalar i3
+- [x] instalar themes de rofi
+- [x] configurar el i3lock-color
+- [x] instalación paquetes
+- [x] i3lock-color
+- [ ] instalar vscode
+- [ ] selector themes
+- [ ] SDDM
+- [x] spotify get
+- [ ] ips y vpn
+- [ ] monitores
+- [x] discos usb y externos
+- [x] (wifi, audio, blueman...)
+- [ ] configuración monitores
+- [ ] notificaciones?
+- [ ] configuración vpn?

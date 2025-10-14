@@ -201,6 +201,9 @@ fi
 # 🔗 Hacer visible Spotify en Rofi
 sudo ln -sf /var/lib/snapd/desktop/applications/spotify_spotify.desktop /usr/share/applications/
 
+# 🔗 Hacer visible vscode en Rofi
+sudo ln -sf /var/lib/snapd/desktop/applications/code-code.desktop /usr/share/applications/
+
 mkdir -p ~/Wallpaper ~/ScreenShots
 cp -v "$ruta/Wallpaper/"* ~/Wallpaper
 

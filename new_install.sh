@@ -137,17 +137,16 @@ echo
 # ────────────────────────────────────────────────
 echo -e "${GREEN}⚙️ Configurando BSPWM y SXHKD...${NC}"
 
-# Crear carpetas necesarias
-mkdir -p ~/.config/{bspwm,sxhkd}
+
 
 # Copiar configuraciones base
-cp -f "$ruta/config/bspwm/bspwmrc" ~/.config/bspwm/
-cp -f "$ruta/config/sxhkd/sxhkdrc" ~/.config/sxhkd/
+cp -rf "$ruta/config/bspwm/" ~/.config/
+cp -rf "$ruta/config/sxhkd/" ~/.config/
 
 # Dar permisos
 chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/bspwm/scripts/*.sh
 chmod +x ~/.config/sxhkd/sxhkdrc
 
 echo -e "${GREEN}✅ Configuraciones base copiadas correctamente.${NC}"
 echo
-

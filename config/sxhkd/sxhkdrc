@@ -142,6 +142,10 @@ super + shift + f
 super + shift + c
 	google-chrome
 
+# BurpSuite
+super + shift + b
+	burpsuite
+
 ###############
 # ScreenShots #
 ###############

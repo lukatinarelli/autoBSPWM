@@ -1,0 +1,82 @@
+#!/bin/sh
+
+# ----------------------------------------------------
+# 1. INICIALIZACIÓN
+# ----------------------------------------------------
+# Inicia sxhkd solo si no está corriendo
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Evita problemas con programas Java
+wmname LG3D &
+
+# Para entornos VMware (opcional, comenta si no lo usas)
+vmware-user-suid-wrapper &
+
+# ----------------------------------------------------
+# 2. CONFIGURACIÓN AUTOMÁTICA DE MONITORES
+# ----------------------------------------------------
+if command -v xrandr >/dev/null 2>&1; then
+    MONITORS=$(xrandr --query | grep " connected" | cut -d' ' -f1)
+    PRIMARY_MONITOR=$(echo "$MONITORS" | head -n 1)
+    SECONDARY_MONITOR=$(echo "$MONITORS" | tail -n 1 | grep -v "$PRIMARY_MONITOR")
+
+    # Monitor primario
+    if [ -n "$PRIMARY_MONITOR" ]; then
+        xrandr --output "$PRIMARY_MONITOR" --primary --auto
+        bspc monitor "$PRIMARY_MONITOR" -n monitor0 -d I II III IV V VI VII VIII IX
+        bspc monitor monitor0 -f I
+    fi
+
+    # Monitor secundario
+    if [ -n "$SECONDARY_MONITOR" ]; then
+        xrandr --output "$SECONDARY_MONITOR" --auto --right-of "$PRIMARY_MONITOR"
+        bspc monitor "$SECONDARY_MONITOR" -n monitor1 -d X
+        bspc monitor monitor1 -f X
+    fi
+fi
+
+# ----------------------------------------------------
+# 3. CONFIGURACIÓN GENERAL BSPWM
+# ----------------------------------------------------
+bspc config border_width 2
+bspc config window_gap 12
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+
+# ----------------------------------------------------
+# 4. REGLAS PARA VENTANAS
+# ----------------------------------------------------
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+# Enfoca un escritorio por defecto si falla la detección
+bspc monitor -f
+bspc desktop -f I
+
+# ----------------------------------------------------
+# 5. SERVICIOS Y ENTORNO
+# ----------------------------------------------------
+# Fondo de pantalla genérico
+[ -f ~/Wallpaper/default.png ] && feh --bg-fill ~/Wallpaper/default.png &
+
+# Polybar
+[ -x ~/.config/polybar/launch.sh ] && ~/.config/polybar/launch.sh &
+
+# Picom compositor
+command -v picom >/dev/null 2>&1 && picom -b &
+
+# Cursor
+xsetroot -cursor_name left_ptr &
+
+# Montaje automático de unidades
+command -v udiskie >/dev/null 2>&1 && udiskie -t &
+
+# ----------------------------------------------------
+# 6. INICIAR BSPWM
+# ----------------------------------------------------
+exec bspwm

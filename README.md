@@ -132,6 +132,17 @@ capturas... caputars themes.sh...
 pensado para ubuntu
 teclas
 
+
+Lista tareas:
+- [x] bspwm
+- [x] sxhkd
+- [x] sxhkd
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+
+---
 - [x] instalar i3
 - [x] instalar themes de rofi
 - [x] configurar el i3lock-color
@@ -148,3 +159,4 @@ teclas
 - [ ] configuración monitores
 - [ ] notificaciones?
 - [ ] configuración vpn?
+

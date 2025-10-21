@@ -145,8 +145,32 @@ cp -rf "$ruta/config/sxhkd/" ~/.config/
 
 # Dar permisos
 chmod +x ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/bspwm/scripts/*.sh
 chmod +x ~/.config/sxhkd/sxhkdrc
 
 echo -e "${GREEN}✅ Configuraciones base copiadas correctamente.${NC}"
 echo
+
+
+# ────────────────────────────────────────────────
+# 🎛️ Instalación de Polybar
+# ────────────────────────────────────────────────
+echo -e "${GREEN}🎛️ Instalando Polybar...${NC}"
+
+case "$distro" in
+    ubuntu|debian|kali|parrot)
+        sudo apt install -y polybar
+        ;;
+    arch|manjaro|endeavouros)
+        sudo pacman -Sy --noconfirm --needed polybar
+        ;;
+    fedora)
+        sudo dnf install -y polybar
+        ;;
+    *)
+        echo -e "${YELLOW}⚠️ No se puede instalar Polybar automáticamente en esta distro.${NC}"
+        ;;
+esac
+
+echo -e "${GREEN}✅ Polybar instalada correctamente.${NC}"
+echo
+

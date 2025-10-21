@@ -128,7 +128,7 @@ super + ctrl + {Left,Down,Up,Right}
 
 # Custom move/resize
 super + alt + {Left,Down,Up,Right}
-	~/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
+	bspwm_resize {west,south,north,east}
 
 ########################
 # Custom Launchers App #
@@ -151,10 +151,10 @@ super + shift + b
 ###############
 
 @Print
-        screenshot select
+	screenshot select
 
 @Print + ctrl
-        screenshot
+	screenshot
 
 @Print + alt
-        screenshot window
+	screenshot window

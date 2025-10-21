@@ -58,21 +58,23 @@ case "$distro" in
     ubuntu|debian|kali|parrot)
         sudo apt update
         sudo apt install -y build-essential git vim \
-            libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev \
+            libxcb1-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev \
             libxcb-randr0-dev libxcb-xinerama0-dev libx11-xcb-dev \
-            libxcb-xkb-dev libxcb-cursor-dev libxcb-keysyms1-dev libxkbcommon-dev \
+            libxcb-xkb-dev libxcb-cursor-dev libxcb-keysyms1-dev \
+            libxkbcommon-dev libxkbcommon-x11-dev \
             picom scrot feh libnotify-bin
         ;;
     arch|manjaro|endeavouros)
         sudo pacman -Sy --noconfirm --needed base-devel git vim \
             xcb-util xcb-util-wm xcb-util-keysyms xcb-util-cursor xcb-util-xrm \
-            picom scrot feh libnotify
+            libxkbcommon-x11 picom scrot feh libnotify
         ;;
     fedora)
         sudo dnf makecache
         sudo dnf install -y @development-tools git vim \
             libxcb libxcb-devel xcb-util-devel xcb-util-wm-devel \
-            picom scrot feh libnotify
+            libxcb-icccm-devel libxcb-keysyms-devel libxkbcommon-devel \
+            libxkbcommon-x11-devel picom scrot feh libnotify
         ;;
     *)
         echo -e "${RED}❌ Distro no reconocida o no soportada automáticamente.${NC}"

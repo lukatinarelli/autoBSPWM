@@ -101,7 +101,13 @@ Algunos de los atajos más importantes incluidos:
 
 
 
+a
+a
 
+a
+a
+a
+a
 
 
 
@@ -159,4 +165,5 @@ Lista tareas:
 - [ ] configuración monitores
 - [ ] notificaciones?
 - [ ] configuración vpn?
+
 

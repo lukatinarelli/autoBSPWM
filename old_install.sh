@@ -109,6 +109,7 @@ TryExec=bspwm
 Type=Application
 EOF
 
+
 # ────────────────────────────────────────────────
 # ⚙️ Compilamos ipolybar_spotify
 # ────────────────────────────────────────────────
@@ -252,4 +253,3 @@ echo "Selecciona un theme en el selector"
 "$ruta/theme.sh"
 
 notify-send "✅ BSPWM INSTALADO"
-

@@ -1,4 +1,4 @@
-# autoBSPWM [:construction: Proyecto en construcción :construction:]
+# autoBSPWM [ :construction: Proyecto en construcción :construction: ]
 
 ¡Bienvenido a **autoBSPWM**!  
 Script para instalar y configurar automáticamente un entorno de trabajo completo y moderno en **Ubuntu** (y derivados), basado en [BSPWM](https://github.com/baskerville/bspwm), [Polybar](https://github.com/polybar/polybar), [sxhkd](https://github.com/baskerville/sxhkd) y más herramientas útiles para tu día a día.
@@ -165,6 +165,7 @@ Lista tareas:
 - [ ] configuración monitores
 - [ ] notificaciones?
 - [ ] configuración vpn?
+
 
 
 

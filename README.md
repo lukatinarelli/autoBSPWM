@@ -165,6 +165,8 @@ Lista tareas:
 - [ ] configuración monitores
 - [ ] notificaciones?
 - [ ] configuración vpn?
+- [ ] suspension de pantalla
+
 
 
 

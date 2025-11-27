@@ -167,6 +167,9 @@ Lista tareas:
 - [ ] configuración vpn?
 - [ ] suspension de pantalla
 
+- [ ] flameshot IMPORTANTE 
+
+
 
 
 

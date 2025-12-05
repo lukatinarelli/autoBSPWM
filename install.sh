@@ -140,15 +140,20 @@ echo
 # ────────────────────────────────────────────────
 echo -e "${GREEN}⚙️ Configurando BSPWM y SXHKD...${NC}"
 
+mkdir -p ~/.config/bspwm
+mkdir -p ~/.config/sxhkd
 
+if [ -d "$ruta/config/bspwm" ] && [ -d "$ruta/config/sxhkd" ]; then
+    cp -rf "$ruta/config/bspwm/"* ~/.config/bspwm/
+    cp -rf "$ruta/config/sxhkd/"* ~/.config/sxhkd/
+else
+    echo -e "${RED}❌ Error: No se encontraron los archivos de configuración en $ruta/config/${NC}"
+    echo -e "${RED}   Asegúrate de ejecutar el script desde la raíz del repositorio.${NC}"
+    exit 1
+fi
 
-# Copiar configuraciones base
-cp -rf "$ruta/config/bspwm/" ~/.config/
-cp -rf "$ruta/config/sxhkd/" ~/.config/
-
-# Dar permisos
-chmod +x ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/sxhkd/sxhkdrc
+chmod +x ~/.config/bspwm/bspwmrc || true
+chmod +x ~/.config/sxhkd/sxhkdrc || true
 
 echo -e "${GREEN}✅ Configuraciones base copiadas correctamente.${NC}"
 echo

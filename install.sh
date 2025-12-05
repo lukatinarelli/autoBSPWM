@@ -3,7 +3,7 @@
 # ────────────────────────────────────────────────
 # 🚀 autoBSPWM Installer
 # by lukatinarelli
-# Este script instala y configura un entorno completo con BSPWM, Polybar, sxhkd, etc.
+# Este script instala y configura un entorno completo con BSPWM, sxhkd, Polybar, etc.
 # ────────────────────────────────────────────────
 
 
@@ -27,9 +27,10 @@ fi
 
 
 # ────────────────────────────────────────────────
-# 📂 Guardar ruta del repositorio
+# 📂 Variables Globales
 # ────────────────────────────────────────────────
 ruta="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$HOME/github"
 
 
 # ────────────────────────────────────────────────
@@ -43,43 +44,69 @@ else
 fi
 
 echo -e "${CYAN}──────────────────────────────────────────────${NC}"
-echo -e "🧠  Detectado sistema: ${YELLOW}$NAME${NC}"
+echo -e "🧠 Detectado sistema: ${YELLOW}$NAME${NC}"
 echo -e "${CYAN}──────────────────────────────────────────────${NC}"
 sleep 1
 
 
 # ────────────────────────────────────────────────
-# 🛠️ Instalación de dependencias base
+# 🛠️ Instalación de TODAS las dependencias
 # ────────────────────────────────────────────────
-echo -e "${GREEN}📦 Instalando dependencias base...${NC}"
+echo -e "${GREEN}📦 Instalando todas las dependencias necesarias...${NC}"
 
 case "$distro" in
     ubuntu|debian|kali|parrot)
         sudo apt update
-        sudo apt install -y build-essential git vim xcb wget curl unzip \
-            libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
+        sudo apt install -y build-essential git vim wget curl unzip \
+            xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
             libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev \
             libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev \
-            libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev
+            libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev \
+            cmake cmake-data pkg-config python3-sphinx libcairo2-dev \
+            libuv1-dev libgfshare-dev libpulse-dev libnl-genl-3-dev libmpdclient-dev \
+            libcurl4-openssl-dev libxcb-image0-dev libxcb-composite0-dev \
+            meson ninja-build libxext-dev libxcb-damage0-dev libxcb-xfixes0-dev \
+            libxcb-render-util0-dev libxcb-render0-dev libxcb-present-dev \
+            libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev \
+            libgl1-mesa-dev libpcre2-dev libpcre3-dev libev-dev uthash-dev
         ;;
     arch|manjaro|endeavouros)
         sudo pacman -Sy --noconfirm --needed base-devel git vim wget curl unzip \
-            libxcb xcb-util xcb-util-wm xcb-util-keysyms xcb-util-xrm xcb-util-cursor
+            libxcb xcb-util xcb-util-wm xcb-util-keysyms xcb-util-xrm xcb-util-cursor \
+            cmake python-sphinx libuv cairo libpulse libmpdclient libcurl-compat \
+            meson ninja libev uthash libconfig pcre2
         ;;
     fedora)
         sudo dnf makecache
         sudo dnf install -y @development-tools git vim wget curl unzip \
             libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-keysyms-devel \
-            alsa-lib-devel xcb-util-xrm-devel xcb-util-cursor-devel
+            alsa-lib-devel xcb-util-xrm-devel xcb-util-cursor-devel \
+            cmake gcc-c++ cairo-devel libuv-devel pulseaudio-libs-devel \
+            libmpdclient-devel libcurl-devel wireless-tools-devel \
+            meson ninja-build libev-devel libconfig-devel libX11-devel \
+            libXext-devel pcre-devel pixman-devel uthash-devel mesa-libGL-devel dbus-devel
         ;;
     *)
         echo -e "${RED}❌ Distro no reconocida.${NC}"
+        echo -e "${YELLOW} Distros soportadas: Ubuntu, Debian, Kali, Parrot, Arch, Manjaro, EndeavourOS, Fedora.${NC}"
         exit 1
         ;;
 esac
 
-echo -e "${GREEN}✅ Dependencias base instaladas correctamente.${NC}"
+echo -e "${GREEN}✅ Todas las dependencias instaladas.${NC}"
 echo
+
+
+# ────────────────────────────────────────────────
+# 📂 Preparar directorio de repositorios
+# ────────────────────────────────────────────────
+if [ ! -d "$REPO_DIR" ]; then
+    mkdir -p "$REPO_DIR"
+    echo -e "${CYAN}📂 Directorio de repositorios creado en: $REPO_DIR${NC}"
+else
+    echo -e "${CYAN}📂 Usando directorio de repositorios: $REPO_DIR${NC}"
+fi
+cd "$REPO_DIR" || exit
 
 
 # ────────────────────────────────────────────────
@@ -87,21 +114,20 @@ echo
 # ────────────────────────────────────────────────
 echo -e "${GREEN}🪟 Instalando BSPWM y SXHKD...${NC}"
 
-# Crear carpeta si no existe
-mkdir -p ~/github
-cd ~/github
-
-# Clonar repositorios solo si no existen
+# Clonar BSPWM
 if [ ! -d "bspwm" ]; then
     git clone https://github.com/baskerville/bspwm.git
 else
-    echo -e "${YELLOW}⚠️  Repositorio BSPWM ya existe, se omite clonación.${NC}"
+    echo -e "${YELLOW}⚠️  Repo BSPWM ya existe, actualizando...${NC}"
+    cd bspwm && git pull && cd ..
 fi
 
+# Clonar SXHKD
 if [ ! -d "sxhkd" ]; then
     git clone https://github.com/baskerville/sxhkd.git
 else
-    echo -e "${YELLOW}⚠️  Repositorio SXHKD ya existe, se omite clonación.${NC}"
+    echo -e "${YELLOW}⚠️  Repo SXHKD ya existe, actualizando...${NC}"
+    cd sxhkd && git pull && cd ..
 fi
 
 # Compilar e instalar BSPWM
@@ -109,14 +135,16 @@ cd bspwm
 make clean
 make
 sudo make install
+cd ..
 
 # Compilar e instalar SXHKD
-cd ../sxhkd
+cd sxhkd
 make clean
 make
 sudo make install
+cd ..
 
-# Crear entrada de sesión si no existe
+# Crear entrada de sesión
 if [ ! -f /usr/share/xsessions/bspwm.desktop ]; then
     echo -e "${CYAN}🧩 Creando entrada de sesión para BSPWM...${NC}"
     sudo tee /usr/share/xsessions/bspwm.desktop > /dev/null <<EOF
@@ -131,7 +159,7 @@ fi
 
 sudo ldconfig
 
-echo -e "${GREEN}✅ BSPWM y SXHKD instalados correctamente.${NC}"
+echo -e "${GREEN}✅ BSPWM y SXHKD instalados.${NC}"
 echo
 
 
@@ -143,41 +171,114 @@ echo -e "${GREEN}⚙️ Configurando BSPWM y SXHKD...${NC}"
 mkdir -p ~/.config/bspwm
 mkdir -p ~/.config/sxhkd
 
-if [ -d "$ruta/config/bspwm" ] && [ -d "$ruta/config/sxhkd" ]; then
-    cp -rf "$ruta/config/bspwm/"* ~/.config/bspwm/
-    cp -rf "$ruta/config/sxhkd/"* ~/.config/sxhkd/
+cd "$ruta" || exit
+
+if [ -d "config/bspwm" ] && [ -d "config/sxhkd" ]; then
+    cp -rf config/bspwm/* ~/.config/bspwm/
+    cp -rf config/sxhkd/* ~/.config/sxhkd/
 else
-    echo -e "${RED}❌ Error: No se encontraron los archivos de configuración en $ruta/config/${NC}"
-    echo -e "${RED}   Asegúrate de ejecutar el script desde la raíz del repositorio.${NC}"
+    echo -e "${RED}❌ Error: No se encontraron configs en $ruta/config/${NC}"
     exit 1
 fi
 
 chmod +x ~/.config/bspwm/bspwmrc || true
 chmod +x ~/.config/sxhkd/sxhkdrc || true
 
-echo -e "${GREEN}✅ Configuraciones base copiadas correctamente.${NC}"
+echo -e "${GREEN}✅ Configs copiados.${NC}"
 echo
 
 
 # ────────────────────────────────────────────────
 # 🎛️ Instalación de Polybar
 # ────────────────────────────────────────────────
-echo -e "${GREEN}🎛️ Instalando Polybar...${NC}"
+echo -e "${GREEN}🎛️ Compilando Polybar...${NC}"
 
-case "$distro" in
-    ubuntu|debian|kali|parrot)
-        sudo apt install -y polybar
-        ;;
-    arch|manjaro|endeavouros)
-        sudo pacman -Sy --noconfirm --needed polybar
-        ;;
-    fedora)
-        sudo dnf install -y polybar
-        ;;
-    *)
-        echo -e "${YELLOW}⚠️ No se puede instalar Polybar automáticamente en esta distro.${NC}"
-        ;;
-esac
+cd "$REPO_DIR" || exit
 
-echo -e "${GREEN}✅ Polybar instalada correctamente.${NC}"
+# Clonar Polybar
+if [ ! -d "polybar" ]; then
+    echo -e "${GREEN}⬇️ Clonando Polybar...${NC}"
+    git clone --recursive https://github.com/polybar/polybar
+else
+    echo -e "${YELLOW}⚠️  Repo Polybar ya existe, actualizando...${NC}"
+    cd polybar && git pull && cd ..
+fi
+
+cd polybar || exit
+
+# Limpiar build anterior si existe
+if [ -d "build" ]; then
+    rm -rf build
+fi
+mkdir build
+cd build || exit
+
+echo -e "${GREEN}🔨 Compilando...${NC}"
+cmake ..
+make -j$(nproc)
+
+echo -e "${GREEN}💾 Instalando...${NC}"
+sudo make install
+
+# Configuración de Polybar
+cd "$ruta" || exit
+echo -e "${GREEN}📂 Copiando configuración de Polybar...${NC}"
+mkdir -p ~/.config/polybar
+
+if [ -d "config/polybar" ]; then
+    cp -rf config/polybar/* ~/.config/polybar/
+    [ -f ~/.config/polybar/launch.sh ] && chmod +x ~/.config/polybar/launch.sh
+else
+    echo -e "${YELLOW}⚠️ No se encontró config de Polybar.${NC}"
+fi
+
+echo -e "${GREEN}✅ Polybar lista.${NC}"
+echo
+
+
+# ────────────────────────────────────────────────
+# 🎨 Instalación de Picom (Compositor)
+# ────────────────────────────────────────────────
+echo -e "${GREEN}🎨 Compilando Picom...${NC}"
+
+cd "$REPO_DIR" || exit
+
+# Clonar Picom
+if [ ! -d "picom" ]; then
+    echo -e "${GREEN}⬇️ Clonando Picom...${NC}"
+    git clone https://github.com/yshui/picom.git
+else
+    echo -e "${YELLOW}⚠️  Repo Picom ya existe, actualizando...${NC}"
+    cd picom && git pull && cd ..
+fi
+
+cd picom || exit
+
+# Limpiar compilación previa si existe
+if [ -d "build" ]; then
+    rm -rf build
+fi
+
+# Configurar y compilar con Meson/Ninja
+echo -e "${GREEN}🔨 Configurando build...${NC}"
+meson setup --buildtype=release build
+
+echo -e "${GREEN}🔨 Compilando...${NC}"
+ninja -C build
+
+echo -e "${GREEN}💾 Instalando...${NC}"
+sudo ninja -C build install
+
+# Copiar configuración
+cd "$ruta" || exit
+echo -e "${GREEN}📂 Copiando configuración de Picom...${NC}"
+mkdir -p ~/.config/picom
+
+if [ -d "config/picom" ]; then
+    cp -rf config/picom/* ~/.config/picom/
+else
+    echo -e "${YELLOW}⚠️ No se encontró config de Picom.${NC}"
+fi
+
+echo -e "${GREEN}✅ Picom instalado y configurado.${NC}"
 echo

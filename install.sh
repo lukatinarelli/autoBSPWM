@@ -68,13 +68,14 @@ case "$distro" in
             meson ninja-build libxext-dev libxcb-damage0-dev libxcb-xfixes0-dev \
             libxcb-render-util0-dev libxcb-render0-dev libxcb-present-dev \
             libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev \
-            libgl1-mesa-dev libpcre2-dev libpcre3-dev libev-dev uthash-dev
+            libgl1-mesa-dev libpcre2-dev libpcre3-dev libev-dev uthash-dev \
+            xcb-proto libx11-xcb-dev
         ;;
     arch|manjaro|endeavouros)
         sudo pacman -Sy --noconfirm --needed base-devel git vim wget curl unzip \
             libxcb xcb-util xcb-util-wm xcb-util-keysyms xcb-util-xrm xcb-util-cursor \
             cmake python-sphinx libuv cairo libpulse libmpdclient libcurl-compat \
-            meson ninja libev uthash libconfig pcre2
+            meson ninja libev uthash libconfig pcre2 xcb-proto
         ;;
     fedora)
         sudo dnf makecache
@@ -84,7 +85,8 @@ case "$distro" in
             cmake gcc-c++ cairo-devel libuv-devel pulseaudio-libs-devel \
             libmpdclient-devel libcurl-devel wireless-tools-devel \
             meson ninja-build libev-devel libconfig-devel libX11-devel \
-            libXext-devel pcre-devel pixman-devel uthash-devel mesa-libGL-devel dbus-devel
+            libXext-devel pcre-devel pixman-devel uthash-devel mesa-libGL-devel dbus-devel \
+            xcb-proto libX11-xcb
         ;;
     *)
         echo -e "${RED}❌ Distro no reconocida.${NC}"

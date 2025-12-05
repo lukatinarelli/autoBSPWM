@@ -14,8 +14,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
-NC='\033[0m' # sin color
-
+NC='\033[0m'
 
 # ────────────────────────────────────────────────
 # 🚫 Comprobar que no se ejecuta como root
@@ -57,28 +56,23 @@ echo -e "${GREEN}📦 Instalando dependencias base...${NC}"
 case "$distro" in
     ubuntu|debian|kali|parrot)
         sudo apt update
-        sudo apt install -y build-essential git vim \
-            libxcb1-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev \
-            libxcb-randr0-dev libxcb-xinerama0-dev libx11-xcb-dev \
-            libxcb-xkb-dev libxcb-cursor-dev libxcb-keysyms1-dev \
-            libxkbcommon-dev libxkbcommon-x11-dev \
-            picom scrot feh libnotify-bin
+        sudo apt install -y build-essential git vim xcb wget curl unzip \
+            libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
+            libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev \
+            libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
         ;;
     arch|manjaro|endeavouros)
-        sudo pacman -Sy --noconfirm --needed base-devel git vim \
-            xcb-util xcb-util-wm xcb-util-keysyms xcb-util-cursor xcb-util-xrm \
-            libxkbcommon-x11 picom scrot feh libnotify
+        sudo pacman -Sy --noconfirm --needed base-devel git vim wget curl unzip \
+            libxcb xcb-util xcb-util-wm xcb-util-keysyms
         ;;
     fedora)
         sudo dnf makecache
-        sudo dnf install -y @development-tools git vim \
-            libxcb libxcb-devel xcb-util-devel xcb-util-wm-devel \
-            libxcb-icccm-devel libxcb-keysyms-devel libxkbcommon-devel \
-            libxkbcommon-x11-devel picom scrot feh libnotify
+        sudo dnf install -y @development-tools git vim wget curl unzip \
+            libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-keysyms-devel \
+            alsa-lib-devel
         ;;
     *)
-        echo -e "${RED}❌ Distro no reconocida o no soportada automáticamente.${NC}"
-        echo "Puedes editar el script para añadir soporte manualmente."
+        echo -e "${RED}❌ Distro no reconocida.${NC}"
         exit 1
         ;;
 esac

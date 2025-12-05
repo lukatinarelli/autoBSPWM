@@ -59,17 +59,18 @@ case "$distro" in
         sudo apt install -y build-essential git vim xcb wget curl unzip \
             libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
             libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev \
-            libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
+            libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev \
+            libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev
         ;;
     arch|manjaro|endeavouros)
         sudo pacman -Sy --noconfirm --needed base-devel git vim wget curl unzip \
-            libxcb xcb-util xcb-util-wm xcb-util-keysyms
+            libxcb xcb-util xcb-util-wm xcb-util-keysyms xcb-util-xrm xcb-util-cursor
         ;;
     fedora)
         sudo dnf makecache
         sudo dnf install -y @development-tools git vim wget curl unzip \
             libxcb-devel xcb-util-devel xcb-util-wm-devel xcb-util-keysyms-devel \
-            alsa-lib-devel
+            alsa-lib-devel xcb-util-xrm-devel xcb-util-cursor-devel
         ;;
     *)
         echo -e "${RED}❌ Distro no reconocida.${NC}"

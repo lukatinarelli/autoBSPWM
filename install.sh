@@ -128,6 +128,8 @@ Type=Application
 EOF
 fi
 
+sudo ldconfig
+
 echo -e "${GREEN}✅ BSPWM y SXHKD instalados correctamente.${NC}"
 echo
 

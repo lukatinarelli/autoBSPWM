@@ -69,13 +69,15 @@ case "$distro" in
             libxcb-render-util0-dev libxcb-render0-dev libxcb-present-dev \
             libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev \
             libgl1-mesa-dev libpcre2-dev libpcre3-dev libev-dev uthash-dev \
-            xcb-proto libx11-xcb-dev python3-xcbgen libepoxy-dev
+            xcb-proto libx11-xcb-dev python3-xcbgen libepoxy-dev \
+            rofi papirus-icon-theme
         ;;
     arch|manjaro|endeavouros)
         sudo pacman -Sy --noconfirm --needed base-devel git vim wget curl unzip \
             libxcb xcb-util xcb-util-wm xcb-util-keysyms xcb-util-xrm xcb-util-cursor \
             cmake python-sphinx libuv cairo libpulse libmpdclient libcurl-compat \
-            meson ninja libev uthash libconfig pcre2 xcb-proto python-xcbgen libepoxy
+            meson ninja libev uthash libconfig pcre2 xcb-proto python-xcbgen libepoxy \
+            rofi papirus-icon-theme
         ;;
     fedora)
         sudo dnf makecache
@@ -86,7 +88,7 @@ case "$distro" in
             libmpdclient-devel libcurl-devel wireless-tools-devel \
             meson ninja-build libev-devel libconfig-devel libX11-devel \
             libXext-devel pcre-devel pixman-devel uthash-devel mesa-libGL-devel dbus-devel \
-            xcb-proto libX11-xcb libepoxy-devel
+            xcb-proto libX11-xcb libepoxy-devel rofi papirus-icon-theme
         ;;
     *)
         echo -e "${RED}❌ Distro no reconocida.${NC}"
@@ -283,4 +285,79 @@ else
 fi
 
 echo -e "${GREEN}✅ Picom instalado y configurado.${NC}"
+echo
+
+
+# ────────────────────────────────────────────────
+# 🚀 Instalación de Rofi (Launcher)
+# ────────────────────────────────────────────────
+echo -e "${GREEN}🎨 Descargando temas extra para Rofi...${NC}"
+cd "$REPO_DIR" || exit
+
+if [ ! -d "rofi-themes-collection" ]; then
+    git clone https://github.com/newmanls/rofi-themes-collection.git
+else
+    echo -e "${YELLOW}⚠️  Colección de temas ya existe, actualizando...${NC}"
+    cd rofi-themes-collection && git pull && cd ..
+fi
+
+mkdir -p ~/.config/rofi/themes
+
+echo -e "${CYAN}   Instalando colección de temas...${NC}"
+cp -rf "$REPO_DIR/rofi-themes-collection/themes/"* ~/.config/rofi/themes/
+
+echo -e "${CYAN}   Copiando tu configuración personal...${NC}"
+cd "$ruta" || exit
+
+if [ -d "config/rofi" ]; then
+    cp -rf config/rofi/* ~/.config/rofi/
+    
+    if [ -f "rofi/nord.rasi" ]; then
+        cp "rofi/nord.rasi" ~/.config/rofi/themes/
+    fi
+else
+    echo -e "${YELLOW}⚠️ No se encontró carpeta config/rofi en tu repositorio.${NC}"
+fi
+
+echo -e "${GREEN}✅ Rofi instalado y configurado.${NC}"
+echo
+
+
+# ────────────────────────────────────────────────
+# 🐱 Instalación de Kitty Terminal
+# ────────────────────────────────────────────────
+echo -e "${GREEN}🐱 Instalando Kitty Terminal...${NC}"
+
+if dpkg -l | grep -q kitty; then
+    sudo apt remove -y kitty
+fi
+rm -rf ~/.local/kitty.app
+
+echo -e "${CYAN}   Descargando última versión oficial...${NC}"
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
+
+mkdir -p ~/.local/bin
+ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/kitty
+ln -sf ~/.local/kitty.app/bin/kitten ~/.local/bin/kitten
+
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+echo -e "${CYAN}   Configurando acceso directo e iconos...${NC}"
+cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
+sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty.desktop
+
+echo -e "${GREEN}📂 Copiando configuración de Kitty...${NC}"
+mkdir -p ~/.config/kitty
+
+cd "$ruta" || exit
+if [ -f "config/kitty/kitty.conf" ]; then
+    cp "config/kitty/kitty.conf" ~/.config/kitty/kitty.conf
+else
+    echo -e "${YELLOW}⚠️ No se encontró config/kitty/kitty.conf en tu repositorio.${NC}"
+fi
+
+echo -e "${GREEN}✅ Kitty instalada y configurada.${NC}"
 echo

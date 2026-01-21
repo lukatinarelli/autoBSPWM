@@ -170,8 +170,22 @@ Lista tareas:
 - [ ] flameshot IMPORTANTE 
 
 
+---
 
 
+bspwm-setup [COMMAND] [OPTIONS]
 
+Commands:
+  install          instala todo el entorno
+  update           actualiza configs/temas
+  uninstall        desinstala (o limpia)
+  theme            cambia tema
+  backup           guarda configs
+  restore          restaura configs
+  status           muestra estado del sistema
 
-
+Options:
+  -h, --help
+  -v, --verbose
+  -y, --yes         sin confirmación
+  --dry-run         simula

@@ -18,7 +18,10 @@
   <em>by lukatinarelli</em>
 </div>
 
+## Table of Contents
 
+1. [Introduction](#%EF%B8%8F-introduction)
+2. ...
 
 <br>
 <br>
@@ -220,6 +223,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

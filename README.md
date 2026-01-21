@@ -1,4 +1,4 @@
-<img width="867" height="288" alt="bspwmctl_banner2" src="https://github.com/user-attachments/assets/14c98674-38a8-4414-84cf-5472a7dce55d" />
+![BSPWM logo](assets/logo/bspwmctl_logo.png)
 
 # autoBSPWM [ :construction: Proyecto en construcción :construction: ]
 
@@ -206,6 +206,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

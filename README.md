@@ -1,5 +1,17 @@
 # autoBSPWM [ :construction: Proyecto en construcción :construction: ]
 
+<pre align="center">
+                       █████             ███████████   █████████  ███████████  █████   ███   █████ ██████   ██████
+                      ░░███             ░░███░░░░░███ ███░░░░░███░░███░░░░░███░░███   ░███  ░░███ ░░██████ ██████ 
+  ██████   █████ ████ ███████    ██████  ░███    ░███░███    ░░░  ░███    ░███ ░███   ░███   ░███  ░███░█████░███ 
+ ░░░░░███ ░░███ ░███ ░░░███░    ███░░███ ░██████████ ░░█████████  ░██████████  ░███   ░███   ░███  ░███░░███ ░███ 
+  ███████  ░███ ░███   ░███    ░███ ░███ ░███░░░░░███ ░░░░░░░░███ ░███░░░░░░   ░░███  █████  ███   ░███ ░░░  ░███ 
+ ███░░███  ░███ ░███   ░███ ███░███ ░███ ░███    ░███ ███    ░███ ░███          ░░░█████░█████░    ░███      ░███ 
+░░████████ ░░████████  ░░█████ ░░██████  ███████████ ░░█████████  █████           ░░███ ░░███      █████     █████
+ ░░░░░░░░   ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░░░░░░░   ░░░░░░░░░  ░░░░░             ░░░   ░░░      ░░░░░     ░░░░░ 
+</pre>
+
+
 ¡Bienvenido a **autoBSPWM**!  
 Script para instalar y configurar automáticamente un entorno de trabajo completo y moderno en **Ubuntu** (y derivados), basado en [BSPWM](https://github.com/baskerville/bspwm), [Polybar](https://github.com/polybar/polybar), [sxhkd](https://github.com/baskerville/sxhkd) y más herramientas útiles para tu día a día.
 
@@ -189,3 +201,4 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+

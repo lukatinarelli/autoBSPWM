@@ -1,23 +1,23 @@
 <div align="center">
- <img src="assets/logo/bspwmctl_logo2.png" width="450">
- 
- # bspwmctl – Opinionated bspwm desktop setup
+  <img src="assets/logo/bspwmctl_logo2.png" width="450">
 
- Create and manage a fully configured bspwm environment using a simple CLI.
+  # bspwmctl – Opinionated bspwm desktop setup
 
- <img alt="Status" src="https://img.shields.io/badge/STATUS-EN%20DESARROLLO-green">
- <img alt="GitHub License" src="https://img.shields.io/github/license/lukatinarelli/autoBSPWM?style=flat&color=red">  
- <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/lukatinarelli/bspwmctl?style=flat&color=yellow">
- <img alt="Shell Script" src="https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white">
- <img alt="bspwm" src="https://img.shields.io/badge/-bspwm-2E2E2E?style=flat&logo=bspwm&logoColor=white"/>
+  Create and manage a fully configured bspwm environment using a simple CLI.
 
- ---
+  <img alt="Status" src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-green">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/lukatinarelli/bspwmctl?style=flat&color=red">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/lukatinarelli/bspwmctl?style=flat&color=yellow">
+  <img alt="Shell Script" src="https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white">
+  <img alt="bspwm" src="https://img.shields.io/badge/-bspwm-2E2E2E?style=flat&logo=bspwm&logoColor=white"/>
 
- ![demo](demo.png)
- 
- <em>by lukatinarelli</em>
+  ---
 
+  ![demo](demo.png)
+
+  <em>by lukatinarelli</em>
 </div>
+
 
 
 <br>
@@ -220,6 +220,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

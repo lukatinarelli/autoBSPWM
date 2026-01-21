@@ -1,20 +1,26 @@
-![BSPWM logo](assets/logo/bspwmctl_logo.png)
+<div align="center">
+ <img src="assets/logo/bspwmctl2 (1).png" width="450">
+ 
+ # bspwmctl – Opinionated bspwm desktop setup
 
-# autoBSPWM [ :construction: Proyecto en construcción :construction: ]
+ Create and manage a fully configured bspwm environment using a simple CLI.
 
-<pre align="center">
- █████                                                                 █████    ████ 
-░░███                                                                 ░░███    ░░███ 
- ░███████   █████  ████████  █████ ███ █████ █████████████    ██████  ███████   ░███ 
- ░███░░███ ███░░  ░░███░░███░░███ ░███░░███ ░░███░░███░░███  ███░░███░░░███░    ░███ 
- ░███ ░███░░█████  ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███ ░███ ░░░   ░███     ░███ 
- ░███ ░███ ░░░░███ ░███ ░███ ░░███████████   ░███ ░███ ░███ ░███  ███  ░███ ███ ░███ 
- ████████  ██████  ░███████   ░░████░████    █████░███ █████░░██████   ░░█████  █████
-░░░░░░░░  ░░░░░░   ░███░░░     ░░░░ ░░░░    ░░░░░ ░░░ ░░░░░  ░░░░░░     ░░░░░  ░░░░░ 
-                   ░███                                                              
-                   █████                                                             
-                  ░░░░░                                                              
-</pre>
+ ---
+
+ ![demo](demo.png)
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+autoBSPWM [ :construction: Proyecto en construcción :construction: ]
+
+
 
 
 ¡Bienvenido a **autoBSPWM**!  
@@ -206,6 +212,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

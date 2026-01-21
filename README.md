@@ -14,6 +14,8 @@
  ---
 
  ![demo](demo.png)
+ 
+ <em>by lukatinarelli</em>
 
 </div>
 
@@ -218,6 +220,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

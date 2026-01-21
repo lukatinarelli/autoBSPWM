@@ -5,10 +5,11 @@
 
  Create and manage a fully configured bspwm environment using a simple CLI.
 
- <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+ <img alt="Status" src="https://img.shields.io/badge/STATUS-EN%20DESARROLLO-green">
  <img alt="GitHub License" src="https://img.shields.io/github/license/lukatinarelli/bspwmctl?style=flat&color=red">
  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/lukatinarelli/bspwmctl?style=flat&color=yellow">
  <img alt="Shell Script" src="https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white">
+ <img alt="bspwm" src="https://img.shields.io/badge/-bspwm-2E2E2E?style=flat&logo=bspwm&logoColor=white"/>
 
  ---
 
@@ -217,6 +218,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

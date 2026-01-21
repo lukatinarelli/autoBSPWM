@@ -1,5 +1,5 @@
 <div align="center">
- <img src="assets/logo/bspwmctl2 (1).png" width="450">
+ <img src="assets/logo/bspwmctl_logo2.png" width="450">
  
  # bspwmctl – Opinionated bspwm desktop setup
 
@@ -212,6 +212,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

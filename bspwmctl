@@ -20,7 +20,7 @@ NC='\033[0m'
 
 # Global variables
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VERSION="0.0.0"
+VERSION="0.1.0"
 XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 BSPWMCTL_DIR="$XDG_DATA_HOME/bspwmctl"
 
@@ -56,27 +56,40 @@ print_help() {
  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║╚██████╗   ██║   ███████╗
  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝ ╚═════╝   ╚═╝   ╚══════╝
 
- bspwmctl – Opinionated bspwm desktop setup
+ bspwmctl — Opinionated bspwm desktop installer & manager
 
- Create and manage a fully configured bspwm environment using a simple CLI.
+ Quickly install and manage a complete bspwm-based desktop environment.
 
  Usage:
    bspwmctl <command> [options]
 
  Commands:
-   install           Install bspwm and required components
-   uninstall         Remove bspwm configuration
-   theme <name>      Apply a theme
-   update            Update bspwmctl
-   help              Show this help panel
+   install            Install bspwm environment
+   uninstall          Remove bspwmctl files and configs
+   theme [name]       Apply or show available themes
+   update             Update bspwmctl to latest version
+   help               Show this help panel
 
- Options:
-   -h, --help        Show help
-   -v, --version     Show version
+ Install options:
+   --minimal           Install minimal environment (bspwm, sxhkd, kitty)
+   --standard          Install full desktop without extra apps (default)
+   --all               Install full desktop + extra applications
+   --no-dep            Skip dependency installation
+   --theme <name>      Apply theme after installation
 
- Notes:
-   This project is under active development.
-   Commands and behavior may change.
+ Theme command:
+   bspwmctl theme              Show current theme / available themes
+   bspwmctl theme <name>       Apply selected theme
+
+ Global options:
+   -h, --help          Show help
+   -v, --version       Show version
+
+ Examples:
+   bspwmctl install
+   bspwmctl install --minimal
+   bspwmctl install --standard --theme nord
+   bspwmctl theme dracula
 
  Project:
    https://github.com/lukatinarelli/bspwmctl

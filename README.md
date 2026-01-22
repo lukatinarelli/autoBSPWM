@@ -14,7 +14,7 @@
 
   ---
 
-  ![demo](demo.png)
+  <img src="assets/screenshots/bspwmctl.png">
 
   <em>by lukatinarelli</em>
 </div>
@@ -224,6 +224,7 @@ Options:
   -v, --verbose
   -y, --yes         sin confirmación
   --dry-run         simula
+
 
 
 

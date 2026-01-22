@@ -281,21 +281,140 @@ install_polybar() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+parse_install_args() {
+  MODE="standard"
+  NO_DEP=false
+  THEME="default"
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --minimal)
+        MODE="minimal"
+        shift
+        ;;
+      --standard)
+        MODE="standard"
+        shift
+        ;;
+      --all)
+        MODE="full"
+        shift
+        ;;
+      --no-dep)
+        NO_DEP=true
+        shift
+        ;;
+      --theme)
+        THEME="$2"
+        shift 2
+        ;;
+      *)
+        die "Unknown option: $1"
+        ;;
+    esac
+  done
+}
+
+apply_theme() {
+  local theme="$1"
+
+  if [[ -z "$theme" ]]; then
+    theme="default"
+  fi
+
+  log "Applying theme: $theme"
+
+  # Aquí va tu lógica de copiar configs de theme
+  # Ej:
+  # cp -rf "$BSPWMCTL_DIR/themes/$theme/"* "$HOME/.config/"
+}
+
 cmd_install() {
+  parse_install_args "$@"
+
   check_os
-  
-  install_dependencies
-  
-  install_bspwm
-  install_sxhkd
-  install_polybar
+
+  if [ "$NO_DEP" = false ]; then
+    install_dependencies
+  fi
+
+  case "$MODE" in
+    minimal)
+      install_bspwm
+      install_sxhkd
+      # install kitty
+      ;;
+
+    standard)
+      install_bspwm
+      install_sxhkd
+      install_kitty
+      # install kitty
+      
+      install_polybar
+      # install_picom
+      # install_zsh
+      # install_powerlevel10k
+      ;;
+
+    full)
+      install_bspwm
+      install_sxhkd
+      # install_kitty
+
+      install_polybar
+      # install_picom
+      # install_zsh
+      # install_powerlevel10k
+
+      # install_vscode
+      # install_spotify
+      # install_burpsuite
+      ;;
+
+    *)
+      die "Unknown install mode: $MODE"
+      ;;
+
+  esac
+
+  apply_theme "$THEME"
 
   success "Installation complete!"
+  success "Run: bspwmctl theme <name> to apply a theme"
+}
+
+cmd_theme() {
+  local theme="${1:-default}"
+  apply_theme "$theme"
 }
 
 
+
+
+
+
+
+
+
 cmd_uninstall() { die "Not implemented yet: uninstall"; }
-cmd_theme()     { die "Not implemented yet: theme"; }
 cmd_update()    { die "Not implemented yet: update"; }
 
 
